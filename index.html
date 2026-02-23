@@ -171,7 +171,7 @@
             margin-bottom: 8px;
         }
         .disk-subtitle {
-            color: #3a6a3a;
+            color: #34dd34;
             font-size: 0.75rem;
             letter-spacing: 0.12em;
         }
@@ -624,7 +624,7 @@
         .dot.green  { background: #27c93f; box-shadow: 0 0 6px #27c93f; }
         .terminal-title {
             flex: 1; text-align: center;
-            color: #3a5a3a;
+            color: #2ca52c;
             font-family: var(--mono); font-size: 0.8rem;
             letter-spacing: 0.04em;
         }
@@ -753,6 +753,15 @@
             color: var(--amber);
             animation: fadeInLine 0.1s ease forwards;
         }
+        .term-link {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+
+        .term-link:hover {
+            color: #39ff14;
+            text-shadow: 0 0 8px #39ff14;
+        }
         @keyframes fadeInLine { from{opacity:0} to{opacity:1} }
     </style>
 </head>
@@ -851,7 +860,7 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="meta">M.S. Cybersecurity &nbsp;|&nbsp; Brooklyn, NY &nbsp;|&nbsp; Sept 2025 – May 2027</div>
         <ul>
             <li><strong>Fall 2025:</strong> Design & Analysis of Algorithms · Computer Networking <span class="tag tag-green">Top of Class</span> · Network Security <span class="tag tag-green">Top of Class</span></li>
-            <li><strong>Spring 2026:</strong> Penetration Testing & Vulnerability Analysis · Cloud Computing · Applied Cryptography</li>
+            <li><strong>Spring 2026:</strong> Penetration Testing & Vulnerability Analysis (AI Security) · Cloud Computing · Applied Cryptography</li>
             <li><strong>Fall 2026:</strong> Information, Security & Privacy · Application Security · Offensive Security</li>
             <li><strong>Spring 2027:</strong> Cloud Security · TBD</li>
         </ul>
@@ -881,7 +890,7 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
             <h3>Salesforce &mdash; Network Software Cloud (Egress Gateway)</h3>
             <div class="meta">Member of Technical Staff (SWE II) &nbsp;|&nbsp; Hyderabad, India &nbsp;|&nbsp; Feb 2025 – Aug 2025</div>
             <ul>
-                <li>Designed and deployed GCP Secure Web Proxy with Cloud NAT in next-hop routing mode via <strong>Terraform</strong> — eliminated operational complexity, enforced global ACLs</li>
+                <li>Designed and deployed GCP Secure Web Proxy with Cloud NAT in next-hop routing mode via Terraform — eliminated operational complexity, enforced global ACLs</li>
                 <li>Enabled <strong>SELinux Enforcing mode</strong> on RHEL9 across Puppet, AIDE, Collectd and Docker integration</li>
                 <li>Mentored intern building AI Agents for Slack support automation — reduced <strong>Time to Diagnose by 90%</strong></li>
                 <li>Benchmarked AWS Intel vs. Graviton instances for scalability, resiliency, and cost efficiency</li>
@@ -908,7 +917,7 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="card tl-item">
             <div class="tl-dot" style="background:var(--cyan);box-shadow:0 0 10px var(--cyan)"></div>
             <h3>Salesforce &mdash; Network Software Cloud (Egress Gateway)</h3>
-            <div class="meta">Software Engineering Intern &nbsp;|&nbsp; Jun 2022 – Jul 2022</div>
+            <div class="meta">Software Engineering Intern &nbsp;|&nbsp; May 2022 – Jul 2022</div>
             <ul>
                 <li>Implemented private VPC endpoints (Interface + Gateway) for S3 and SQS — <strong>88% average daily cost savings</strong></li>
                 <li>Re-routed all traffic through AWS private network, improving security posture significantly</li>
@@ -936,7 +945,13 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="proj-card" onclick="window.open('https://github.com/Alien0525/cloudhawk','_blank')" style="animation-delay:0.05s">
             <h3>🦅 CloudHawk</h3>
             <div class="meta">Python, Kafka, ML &nbsp;|&nbsp; Jan 2026 &nbsp;|&nbsp; <a href="https://github.com/Alien0525/cloudhawk" target="_blank" onclick="event.stopPropagation()">GitHub →</a></div>
-            <p>Distributed SIEM ingesting AWS CloudTrail at <strong style="color:var(--green)">10,000+ events/sec</strong> via Kafka. Sub-100ms detection via rule-based correlation, MITRE ATT&CK mapping, and ML anomaly detection (Isolation Forest). React dashboard with WebSocket live updates.</p>
+            <p>
+                Distributed SIEM ingesting AWS CloudTrail at 
+                <strong style="color:var(--green)">10,000+ events/sec</strong> via Kafka.
+                <strong style="color:var(--green)">Sub-100ms detection</strong> via rule-based correlation, 
+                MITRE ATT&CK mapping, and ML anomaly detection (Isolation Forest).
+                React dashboard with WebSocket live updates.          
+            </p>
             <div class="tags">
                 <span class="tag tag-amber">Kafka</span>
                 <span class="tag tag-green">Python</span>
@@ -950,7 +965,13 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="proj-card" onclick="window.open('https://github.com/Alien0525/ShardGuard','_blank')" style="animation-delay:0.12s">
             <h3>🔐 ShardGuard</h3>
             <div class="meta">NYU Secure Systems Lab &nbsp;|&nbsp; Jan 2026 – Present &nbsp;|&nbsp; <a href="https://github.com/Alien0525/ShardGuard" target="_blank" onclick="event.stopPropagation()">GitHub →</a></div>
-            <p>AI security framework addressing <strong style="color:var(--red)">prompt injection, data exfiltration, and privilege escalation</strong> in LLM-powered agent systems. Planning/execution LLM separation with opaque value handling and least-privilege MCP access control.</p>
+            <p>
+                AI security framework addressing 
+                <strong style="color:var(--green)">prompt injection</strong>, 
+                <strong style="color:var(--green)">data exfiltration</strong>, and 
+                <strong style="color:var(--green)">privilege escalation</strong> in LLM-powered agent systems.
+                Planning/execution LLM separation with least-privilege MCP access control.          
+            </p>
             <div class="tags">
                 <span class="tag tag-red">LLM Security</span>
                 <span class="tag tag-amber">MCP</span>
@@ -963,11 +984,14 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="proj-card" onclick="window.open('https://github.com/Alien0525/dining-concierge-chatbot','_blank')" style="animation-delay:0.19s">
             <h3>🍽️ Dining Concierge Chatbot</h3>
             <div class="meta">AWS Serverless &nbsp;|&nbsp; Feb 2026 &nbsp;|&nbsp; <a href="https://github.com/Alien0525/dining-concierge-chatbot" target="_blank" onclick="event.stopPropagation()">GitHub →</a></div>
-            <p>Fully serverless chatbot with NLU-driven restaurant recommendations. Lambda + API Gateway + Amazon Lex + SQS + DynamoDB + OpenSearch. 1,000+ restaurants indexed from Yelp API. Least-privilege IAM via AWS CLI + Bash automation.</p>
+            <p>
+                Fully serverless cloud application built using AWS Lambda, S3, DynamoDB, OpenSearch, SES, and CloudWatch for automated monitoring; deployed with IaC bash scripts for repeatable deployments.
+            </p>
             <div class="tags">
                 <span class="tag tag-amber">AWS Lambda</span>
                 <span class="tag tag-cyan">Amazon Lex</span>
                 <span class="tag tag-green">DynamoDB</span>
+                <span class="tag tag-cyan">AWS S3</span>
                 <span class="tag tag-amber">OpenSearch</span>
                 <span class="tag tag-green">Serverless</span>
             </div>
@@ -976,7 +1000,14 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="proj-card" onclick="window.open('https://github.com/Alien0525/dynamic-multiparty-otp-protocol','_blank')" style="animation-delay:0.26s">
             <h3>🔑 Dynamic Multiparty OTP</h3>
             <div class="meta">Python, Cryptography &nbsp;|&nbsp; Jan 2026 &nbsp;|&nbsp; <a href="https://github.com/Alien0525/dynamic-multiparty-otp-protocol" target="_blank" onclick="event.stopPropagation()">GitHub →</a></div>
-            <p>Dynamic pad reallocation algorithm for multi-party OTP maintaining <strong style="color:var(--cyan)">perfect secrecy</strong> in async networks. Web-based visualizer, CLI test suite, and lightweight API for empirical collision detection.</p>
+            <p>
+                Dynamic pad reallocation protocol for multi-party OTP maintaining 
+                <strong style="color:var(--green)">perfect secrecy </strong>across 80,000 Monte Carlo executions (zero collisions).
+                Achieved <strong style="color:var(--green)">12.2% pad waste</strong> compared to 66.7% baseline
+                (<strong style="color:var(--green)">up to 28× efficiency improvement</strong>) with 
+                <strong style="color:var(--green)">O(1) runtime per message</strong>.
+                Includes web visualizer, CLI testing suite, and lightweight API for empirical protocol validation.
+            </p>
             <div class="tags">
                 <span class="tag tag-cyan">Cryptography</span>
                 <span class="tag tag-green">Python</span>
@@ -988,7 +1019,10 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         <div class="proj-card" onclick="window.open('https://github.com/Alien0525/udp-networking-toolkit','_blank')" style="animation-delay:0.33s">
             <h3>🌐 UDP Networking Toolkit</h3>
             <div class="meta">Python, Sockets &nbsp;|&nbsp; Nov 2025 &nbsp;|&nbsp; <a href="https://github.com/Alien0525/udp-networking-toolkit" target="_blank" onclick="event.stopPropagation()">GitHub →</a></div>
-            <p>Custom transport-layer protocols built from scratch over raw UDP. RTT measurement, heartbeat-based failure detection, reliable multi-packet file transfer — sequence numbers, ACKs, retransmission, adaptive timeouts. No TCP.</p>
+            <p>
+                Custom transport-layer protocols built from scratch over raw UDP.
+                Reliable multi-packet file transfer using sequence numbers, ACKs, retransmission, and adaptive timeouts.           
+            </p>
             <div class="tags">
                 <span class="tag tag-green">Python</span>
                 <span class="tag tag-amber">Socket Programming</span>
@@ -1173,10 +1207,16 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
     <div class="section-header"><h2>contact</h2></div>
 
     <div class="contact-grid">
-        <a class="contact-link" href="/cdn-cgi/l/email-protection#d2b3bfb3bcbca1e2e7e0e792b5bfb3bbbefcb1bdbf">
+        <a class="contact-link" href="mailto:amanns0525@gmail.com">
             <div class="contact-icon">📧</div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value"><span class="__cf_email__" data-cfemail="452428242b2b3675707770052228242c296b262a28">[email&#160;protected]</span></div>
+            <div class="contact-label">Email (Personal)</div>
+            <div class="contact-value">amanns0525@gmail.com</div>
+        </a>
+
+        <a class="contact-link" href="mailto:aas10498@nyu.edu">
+            <div class="contact-icon">🎓</div>
+            <div class="contact-label">Email (NYU)</div>
+            <div class="contact-value">aas10498@nyu.edu</div>
         </a>
         <a class="contact-link" href="https://github.com/Alien0525" target="_blank">
             <div class="contact-icon">🐙</div>
@@ -1206,11 +1246,11 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
         </div>
         <div class="now-item">
             <div class="now-dot" style="background:var(--purple);box-shadow:0 0 8px var(--purple)"></div>
-            <div class="now-text">Solving machines on <strong>Hack The Box</strong> — pentesting track</div>
+            <div class="now-text">Solving machines on <strong>Hack The Box</strong> — pentesting track and AI red teaming track</div>
         </div>
         <div class="now-item">
             <div class="now-dot" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></div>
-            <div class="now-text">Open to: Security Engineering · Cloud Security · Offensive Security · SWE roles</div>
+            <div class="now-text">Open to: Security Engineering · Offensive Security · Network Security · AI Red Teaming</div>
         </div>
     </div>
 </section>
@@ -1301,7 +1341,7 @@ const bootLines = [
     {t:'[  OK  ] Mounted /mnt/projects  (6 repos found)', c:'boot-ok'},
     {t:'[  OK  ] Loaded module: ML_Isolation_Forest_Anomaly_Detection', c:'boot-ok'},
     {t:'[  OK  ] Loaded module: CloudHawk_SIEM_v1.0  (10,000 evt/s)', c:'boot-ok'},
-    {t:'[  OK  ] Loaded module: ShardGuard_LLM_Security_Framework', c:'boot-ok'},
+    {t:'[  OK  ] Loaded module: Dynamic_One-Time_Pad_Algorithm_v2.0', c:'boot-ok'},
     {t:'[  OK  ] Initializing shell environment...', c:'boot-ok'},
     {t:'', c:''},
 ];
@@ -1334,7 +1374,7 @@ window.onload = () => {
             diskSpinner.style.display = 'none';
             printBootLine();
         }, 500);
-    }, 2800);
+    }, 2500);
 };
 
 // ═══════════════════════════════════════════
@@ -1421,11 +1461,7 @@ const FILES = {
 
 <span style="color:var(--green)">BITS Pilani — Goa Campus</span>
 <span style="color:var(--amber)">B.E. Electronics & Communication Engineering</span> | Aug 2019 – Jun 2023 | <span style="color:var(--green)">CGPA: 8.10/10</span>
-  Courses: DSA · Discrete Math · OOP (Java) · OS · Cryptography · Networks · Probability · Linear Algebra
-
-<span style="color:var(--green)">Research</span>: Outage Analysis of U2U Communications | BITS Pilani | Aug–Dec 2022
-  Co-authored paper on Full Duplex Cooperative U2U systems using optimal UAV relay selection
-  Achieved ~50% reduction in outage probability — validated via MATLAB` },
+  Courses: DSA · Discrete Math · OOP (Java) · OS · Cryptography · Communication Networks · Probability · Linear Algebra` },
 
     'experience': { 'data.txt': `<span style="color:var(--cyan)">═══ EXPERIENCE ═══</span>
 
@@ -1446,8 +1482,8 @@ const FILES = {
   → Led DDoS incident response — 24/7 on-call for production outages
   → Reduced customer queries by <span style="color:var(--green)">95%</span> via FEDX activity status tracking
 
-<span style="color:var(--green)">Salesforce — Hyperforce</span>
-<span style="color:var(--amber)">Software Engineering Intern</span> | Jun 2022 – Jul 2022
+<span style="color:var(--green)">Salesforce — Network Software Cloud (Egress Gateway)</span>
+<span style="color:var(--amber)">Software Engineering Intern</span> | May 2022 – Jul 2022
   → Implemented private VPC endpoints (Interface + Gateway) for S3 and SQS
   → <span style="color:var(--green)">88% average daily cost savings</span> by routing traffic through AWS private network
 
@@ -1460,8 +1496,8 @@ const FILES = {
     'projects': {
         'cloudhawk.md': `<span style="color:var(--cyan)">═══ CloudHawk ═══</span>
 Distributed SIEM | Python, Kafka, ML | Jan 2026
-<span style="color:var(--green)">github.com/Alien0525/cloudhawk</span>
-Ingests AWS CloudTrail at <span style="color:var(--green)">10,000+ events/sec</span> via Kafka.
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/cloudhawk" target="_blank" class="term-link">github.com/Alien0525/cloudhawk</a>
+Ingests AWS CloudTrail at 10,000+ events/sec via Kafka.
 Sub-100ms detection via rule-based correlation, MITRE ATT&CK mapping,
 and ML anomaly detection (Isolation Forest).
 React dashboard with WebSocket live updates.
@@ -1469,7 +1505,7 @@ Stack: Kafka · Python · FastAPI · Docker · ML`,
 
         'shardguard.md': `<span style="color:var(--cyan)">═══ ShardGuard ═══</span>
 LLM Security Framework | NYU Secure Systems Lab | Jan 2026 – Present
-<span style="color:var(--green)">github.com/Alien0525/ShardGuard</span>
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/ShardGuard" target="_blank" class="term-link">github.com/Alien0525/ShardGuard</a>
 AI security framework addressing prompt injection, data exfiltration,
 and privilege escalation in LLM-powered agent systems.
 Planning/execution LLM separation with opaque value handling
@@ -1478,31 +1514,43 @@ Stack: Python · LLM Security · MCP · AI Security`,
 
         'otp-protocol.md': `<span style="color:var(--cyan)">═══ Dynamic Multiparty OTP ═══</span>
 Python, Cryptography | Jan 2026
-<span style="color:var(--green)">github.com/Alien0525/dynamic-multiparty-otp-protocol</span>
-Dynamic pad reallocation algorithm for multi-party OTP
-maintaining perfect secrecy in async networks.
-Web-based visualizer, CLI test suite, and lightweight API.`,
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/dynamic-multiparty-otp-protocol" target="_blank" class="term-link">github.com/Alien0525/dynamic-multiparty-otp-protocol</a>
+Dynamic pad reallocation protocol maintaining perfect secrecy.
+Validated across 80,000 executions (zero collisions).
+Reduced pad waste to 2.0%–12.2% vs 66.7% baseline (up to 28× improvement).
+Includes web visualizer, CLI test suite, and lightweight API.
+Stack: Python · Cryptography · Distributed Systems`,
 
-        'chatbot.md': `<span style="color:var(--cyan)">═══ Dining Concierge Chatbot ═══</span>
+'chatbot.md': `<span style="color:var(--cyan)">═══ Dining Concierge Chatbot ═══</span>
 AWS Serverless | Feb 2026
-<span style="color:var(--green)">github.com/Alien0525/dining-concierge-chatbot</span>
-Fully serverless NLU-driven restaurant recommendations.
-Lambda + API Gateway + Amazon Lex + SQS + DynamoDB + OpenSearch.
-1,000+ restaurants indexed from Yelp API.`,
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/dining-concierge-chatbot" target="_blank" class="term-link">github.com/Alien0525/dining-concierge-chatbot</a>
+Fully serverless NLU-driven restaurant recommendation system.
+Processes queries across 1,000+ restaurants using AWS Lambda, Lex, and OpenSearch.
+Implements least-privilege IAM and event-driven microservices architecture.
+Stack: AWS Lambda · Lex · DynamoDB · OpenSearch · Serverless`,
 
         'udp-toolkit.md': `<span style="color:var(--cyan)">═══ UDP Networking Toolkit ═══</span>
 Python, Sockets | Nov 2025
-<span style="color:var(--green)">github.com/Alien0525/udp-networking-toolkit</span>
-Custom transport-layer protocols built from scratch over raw UDP.
-RTT measurement, heartbeat-based failure detection,
-reliable multi-packet file transfer — ACKs, retransmission, adaptive timeouts.`,
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/udp-networking-toolkit" target="_blank" class="term-link">github.com/Alien0525/udp-networking-toolkit</a>
+Built reliable transport protocols over raw UDP from scratch.
+Implements RTT measurement, heartbeat failure detection,
+and reliable file transfer using ACKs, retransmission, and adaptive timeouts.
+Stack: Python · Socket Programming · Protocol Design`,
 
         'blockchain-vote.md': `<span style="color:var(--cyan)">═══ Blockchain Voting System ═══</span>
 Solidity, Ethereum | May 2021
-<span style="color:var(--green)">github.com/Alien0525/Blockchain-Based-Voting-System-For-Election</span>
-Tamper-proof voting on Ethereum Ropsten testnet.
-MetaMask for identity-based vote casting.
-Immutable vote storage on cryptographically linked blocks.`,
+<span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/Blockchain-Based-Voting-System-For-Election" target="_blank" class="term-link">github.com/Alien0525/Blockchain-Based-Voting-System-For-Election</a>
+Developed tamper-proof voting system using Ethereum smart contracts.
+Ensures immutable vote storage and secure identity verification via MetaMask.
+Deployed and tested on Ethereum Ropsten testnet.
+Stack: Solidity · Ethereum · Smart Contracts · Web3`,
+
+        'u2u-research.md': `<span style="color:var(--cyan)">═══ U2U Communication Outage Analysis ═══</span>
+BITS Pilani Research | Aug 2022 – Dec 2022
+Designed algorithm for optimal UAV relay selection in full-duplex cooperative networks.
+Achieved ~50% reduction in outage probability via MATLAB simulations.
+Co-authored research under faculty supervision.
+Stack: MATLAB · Wireless Communication · Algorithm Design · Research`,
     },
 
     'skills': { 'data.txt': `<span style="color:var(--cyan)">═══ SKILLS ═══</span>
@@ -1545,13 +1593,13 @@ Immutable vote storage on cryptographically linked blocks.`,
 
     'contact': { 'data.txt': `<span style="color:var(--cyan)">═══ CONTACT ═══</span>
 
-  📧  amanns0525@gmail.com
+  📧  amanns0525@gmail.com | aas10498@nyu.edu
   🐙  github.com/Alien0525
   💼  linkedin.com/in/amanns0525
   📱  +1 (201) 238-6376
 
 <span style="color:var(--green)">● Open to opportunities</span>
-  Security Engineering · Cloud Security · Offensive Security · SWE roles`, '.secret': `-----BEGIN CLASSIFIED-----
+  Security Engineering · Offensive Security · Network Security · AI Red Teaming roles`, '.secret': `-----BEGIN CLASSIFIED-----
 alias: Alien0525
 clearance: OSCP-in-progress | HTB-active
 current_op: ShardGuard - LLM security research @ NYU
