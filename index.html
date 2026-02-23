@@ -1612,7 +1612,7 @@ hire_probability: 99.7% (if you got this far)
 };
 
 const ROOT_HIDDEN = {
-    '.bashrc': 'export PS1="guest@aman-sec:\\w\\$ "\nalias ll="ls -la"\nalias cls="clear"\nexport EDITOR=vim',
+    '.bashrc': 'export PS1="guest@aman-sec:\\w\\$ "\nalias ll="ls -la"\nalias cls="clear"\nexport EDITOR=vim\n# i was wondering when you\'d open this',
     '.ssh/': 'drwx------ (go away)',
     '.secret': `0x666c61677b637572696f736974795f6c65645f75735f66726f6d5f666972655f746f5f6669726577616c6c737d`
 };
@@ -1766,6 +1766,8 @@ HTB    : Active | OSCP prep in progress`;
             pathDisplay.innerText = currentDir;
             titleBar.innerText = `guest@aman-sec : ${currentDir}`;
             response = `<span style="color:var(--muted)">Entered ${currentDir}. Run <span style="color:var(--amber)">ls</span> to list files.</span>`;
+        } else if (currentDir === '~' && (target === '.ssh' || target === '.ssh/')) {
+            response = `<span style="color:var(--red)">drwx------  .ssh: Permission denied.</span> <span style="color:var(--amber)">Go away.</span>`;
         } else {
             response = `<span style="color:var(--red)">cd: ${esc(rawTarget)}: No such directory</span>`;
         }
@@ -1786,8 +1788,12 @@ HTB    : Active | OSCP prep in progress`;
                 response = `<span style="color:var(--red)">cat: ${esc(target)}: No such file. Run <span style="color:var(--amber)">ls -la</span> to see all files.</span>`;
             }
         } else if (ROOT_HIDDEN[target] || ROOT_HIDDEN[targetLower]) {
-            const content = ROOT_HIDDEN[target] || ROOT_HIDDEN[targetLower];
-            response = `<span style="color:var(--muted)">// ~/${target}</span>\n${content}`;
+            const key = target in ROOT_HIDDEN ? target : targetLower;
+            if (key === '.ssh/' || key === '.ssh') {
+                response = `<span style="color:var(--red)">cat: ${esc(target)}: Is a directory</span>`;
+            } else {
+                response = `<span style="color:var(--muted)">// ~/${target}</span>\n${ROOT_HIDDEN[key]}`;
+            }
         } else if (availableDirs.includes(targetLower.replace(/\/$/,''))) {
             response = `<span style="color:var(--red)">cat: ${esc(target)}: Is a directory. Use <span style="color:var(--amber)">cd ${target}</span> first.</span>`;
         } else {
