@@ -347,22 +347,32 @@ Stack: MATLAB · Wireless Communication · Algorithm Design · Research`,
 
     'skills': { 'data.txt': `<span style="color:var(--cyan)">═══ SKILLS ═══</span>
 
-<span style="color:var(--amber)">// languages</span>
-  Python · Go · C/C++ · Java · JavaScript · Bash/Shell · Powershell · Solidity · Verilog · MATLAB
+<span style="color:var(--amber)">// programming & scripting</span>
+  Python · Go · C · C++ · Java · JavaScript · Bash · PowerShell · SQL · Solidity · Assembly · Verilog · MATLAB
 
-<span style="color:var(--amber)">// security & networking</span>
-  Cloud Security (AWS/GCP) · OWASP Top 10 · Web/Mobile Pentesting · API Security · CVE Analysis
-  OSINT · Metasploit · Burp Suite · NMAP · Wireshark · Splunk · SELinux · iptables
-  MITRE ATT&CK · DDoS Mitigation
+<span style="color:var(--amber)">// cybersecurity</span>
+  Network Penetration Testing · Cloud Security (AWS, GCP) · Vulnerability Assessment · Web Application Security
+  CVE Analysis · OSINT · Reverse Engineering · OWASP Top 10 · MITRE ATT&CK
+
+<span style="color:var(--amber)">// security tools</span>
+  Burp Suite · Metasploit · Nmap · Wireshark · Gobuster · ffuf · Nikto · Hashcat
+  John the Ripper · Netcat · Ghidra · GDB
 
 <span style="color:var(--amber)">// cloud & devops</span>
-  AWS · GCP · Terraform · Docker · Kubernetes · Jenkins · Spinnaker · Git · Grafana · Prometheus
+  AWS · Google Cloud Platform · Docker · Kubernetes · Terraform · CI/CD · Git/GitHub
+
+<span style="color:var(--amber)">// networking & systems</span>
+  TCP/IP · DNS · HTTP/HTTPS · TLS · SSH · Firewalls · VPN · iptables · Linux · Network Traffic Analysis
+
+<span style="color:var(--amber)">// detection & monitoring</span>
+  Splunk · AWS CloudWatch · Grafana · Prometheus
 
 <span style="color:var(--amber)">// backend & distributed systems</span>
-  Apache Kafka · Redis · Elasticsearch · TimescaleDB · FastAPI · Node.js · React · Django · MongoDB · SQL
+  FastAPI · Node.js · Express.js · Django · REST APIs · Apache Kafka · Redis
+  Elasticsearch · OpenSearch · MongoDB · PostgreSQL
 
-<span style="color:var(--amber)">// ai & ml</span>
-  Agentic AI · AIOps · MCP · LLM Security · scikit-learn` },
+<span style="color:var(--amber)">// ai / ml security</span>
+  Machine Learning (scikit-learn) · LLM Security · Prompt Injection Security` },
 
     'life_outside_terminal': { 'data.txt': `<span style="color:var(--cyan)">═══ LIFE_OUTSIDE_TERMINAL ═══</span>
 
