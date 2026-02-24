@@ -405,7 +405,7 @@ Stack: MATLAB · Wireless Communication · Algorithm Design · Research`,
   💼  linkedin.com/in/amanns0525
   📱  +1 (201) 238-6376
 
-<span style="color:var(--green)">● Open to opportunities</span>
+<span style="color:var(--green)">Open to opportunities</span>
   Security Engineering · Offensive Security · Network Security · AI Red Teaming roles`, '.secret': `-----BEGIN CLASSIFIED-----
 alias: Alien0525
 clearance: OSCP-in-progress | HTB-active
@@ -509,7 +509,7 @@ inputField.addEventListener('keydown', function(e) {
         response = `<span style="color:var(--cyan)">Aman Ahmed N S</span>
 Role   : MS Cybersecurity @ NYU Tandon | Ex-Salesforce SWE II
 Focus  : Cloud Security · Offensive Security · AI Security
-Status : <span style="color:var(--green)">● Open to opportunities</span>
+Status : <span style="color:var(--green)">Open to opportunities</span>
 HTB    : Active | OSCP prep in progress`;
 
     } else if (cmd === 'pwd') {
