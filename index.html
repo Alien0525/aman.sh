@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aman N S | Cybersecurity</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%20%20%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23000a00%22/%3E%0A%20%20%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%2339ff14%22%20stroke-width%3D%221.5%22/%3E%0A%20%20%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%2339ff14%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%222%22%20fill%3D%22%2339ff14%22/%3E%0A%20%20%3Cline%20x1%3D%224%22%20y1%3D%2216%22%20x2%3D%2228%22%20y2%3D%2216%22%20stroke%3D%22%2339ff14%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cline%20x1%3D%2216%22%20y1%3D%224%22%20x2%3D%2216%22%20y2%3D%2228%22%20stroke%3D%22%2339ff14%22%20stroke-width%3D%221%22/%3E%0A%3C/svg%3E">
+    <title>Aman N S</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,7 +20,10 @@
         <div class="disk-ring disk-ring-4"></div>
         <div class="disk-ring disk-ring-5"></div>
         <div class="disk-labels" id="diskLabels"></div>
-        <div class="disk-center">./aman<br>.sh</div>
+        <div class="disk-center">
+            <img src="logo.png" style="width:80px;"><br>
+            <strong>./aman.sh</strong>
+        </div>
     </div>
     <div class="disk-title">LOADING ./aman.sh</div>
     <div class="disk-subtitle">parrot os security edition</div>
@@ -31,11 +34,27 @@
 
 <!-- ═══════════════ NAV ═══════════════ -->
 <nav>
-    <div class="nav-brand" onclick="switchPage('root')">aman.sh</div>
-    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+
+    <div class="nav-brand" onclick="switchPage('root')">
+
+        <img src="logo.png"
+             alt="logo"
+             style="width:26px; height:26px; object-fit:contain;">
+
+        <span>aman.sh</span>
+
+    </div>
+
+    <button class="nav-hamburger" id="navHamburger"
+            onclick="toggleMobileNav()"
+            aria-label="Toggle navigation">
+
         <span></span><span></span><span></span>
+
     </button>
+
     <div class="nav-links" id="navLinks"></div>
+
 </nav>
 
 <main>
