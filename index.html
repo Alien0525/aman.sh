@@ -249,6 +249,58 @@
         }
         .nav-links a::after { display: none !important; }
 
+        /* ═══ HAMBURGER ═══ */
+        .nav-hamburger {
+            display: none;
+            margin-left: auto;
+            background: none;
+            border: 1px solid rgba(57,255,20,0.3);
+            border-radius: 3px;
+            padding: 6px 8px;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--green);
+            transition: all 0.25s ease;
+            box-shadow: 0 0 4px var(--green);
+        }
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        @media (max-width: 720px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 52px;
+                left: 0; right: 0;
+                background: rgba(4,6,4,0.98);
+                backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                gap: 0;
+                padding: 6px 0;
+                z-index: 499;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a {
+                padding: 12px 24px;
+                border-bottom: none;
+                border-left: 2px solid transparent;
+                font-size: 0.95rem;
+            }
+            .nav-links a.active {
+                border-left-color: var(--green);
+                border-bottom-color: transparent;
+            }
+        }
+
         /* ═══ MAIN LAYOUT ═══ */
         main {
             position: relative; z-index: 2;
@@ -655,8 +707,36 @@
             color: var(--green); font-family: var(--mono);
             font-size: 0.9rem; flex: 1; outline: none;
             caret-color: var(--green);
+            /* Prevent iOS zoom on focus */
+            -webkit-text-size-adjust: 100%;
         }
         input[type="text"]::placeholder { color: #1a3a1a; }
+
+        /* Mobile terminal improvements */
+        @media (max-width: 720px) {
+            .terminal-window {
+                min-height: 400px;
+                max-height: 72vh;
+                border-radius: 4px;
+            }
+            .terminal-body {
+                font-size: 0.87rem;
+                padding: 12px 14px;
+            }
+            .prompt-line {
+                position: sticky;
+                bottom: 0;
+                background: rgba(4,4,6,0.97);
+                padding: 8px 0 4px;
+                margin-top: 10px;
+                border-top: 1px solid rgba(57,255,20,0.08);
+            }
+            input[type="text"] {
+                font-size: 1rem; /* Prevents iOS auto-zoom (must be >= 16px equivalent) */
+                padding: 6px 0;
+                min-height: 36px;
+            }
+        }
 
         .output { margin-top: 8px; white-space: pre-wrap; line-height: 1.5; }
 
@@ -790,15 +870,18 @@
 <!-- ═══════════════ NAV ═══════════════ -->
 <nav>
     <div class="nav-brand" onclick="switchPage('root')">aman.sh</div>
-    <div class="nav-links">
-        <a onclick="switchPage('root')"         id="link-root"         class="active">~/</a>
-        <a onclick="switchPage('education')"    id="link-education">education/</a>
-        <a onclick="switchPage('experience')"   id="link-experience">experience/</a>
-        <a onclick="switchPage('projects')"     id="link-projects">projects/</a>
-        <a onclick="switchPage('skills')"       id="link-skills">skills/</a>
-        <a onclick="switchPage('achievements')" id="link-achievements">achievements/</a>
-        <a onclick="switchPage('life_outside_terminal')" id="link-life_outside_terminal">life_outside_terminal/</a>
-        <a onclick="showPing()" id="link-contact">contact/</a>
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+        <a onclick="switchPage('root');closeMobileNav()"         id="link-root"         class="active">~/</a>
+        <a onclick="switchPage('education');closeMobileNav()"    id="link-education">education/</a>
+        <a onclick="switchPage('experience');closeMobileNav()"   id="link-experience">experience/</a>
+        <a onclick="switchPage('projects');closeMobileNav()"     id="link-projects">projects/</a>
+        <a onclick="switchPage('skills');closeMobileNav()"       id="link-skills">skills/</a>
+        <a onclick="switchPage('achievements');closeMobileNav()" id="link-achievements">achievements/</a>
+        <a onclick="switchPage('life_outside_terminal');closeMobileNav()" id="link-life_outside_terminal">life_outside_terminal/</a>
+        <a onclick="showPing();closeMobileNav()" id="link-contact">contact/</a>
     </div>
 </nav>
 
@@ -1208,16 +1291,16 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
     <div class="section-header"><h2>contact</h2></div>
 
     <div class="contact-grid">
-        <a class="contact-link" href="mailto:amanns0525@gmail.com">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#442529252a2a3774717671042329252d286a272b29">
             <div class="contact-icon">📧</div>
             <div class="contact-label">Email (Personal)</div>
-            <div class="contact-value">amanns0525@gmail.com</div>
+            <div class="contact-value"><span class="__cf_email__" data-cfemail="61000c000f0f125154535421060c00080d4f020e0c">[email&#160;protected]</span></div>
         </a>
 
-        <a class="contact-link" href="mailto:aas10498@nyu.edu">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#c6a7a7b5f7f6f2fffe86a8bfb3e8a3a2b3">
             <div class="contact-icon">🎓</div>
             <div class="contact-label">Email (NYU)</div>
-            <div class="contact-value">aas10498@nyu.edu</div>
+            <div class="contact-value"><span class="__cf_email__" data-cfemail="157474662425212c2d557b6c603b707160">[email&#160;protected]</span></div>
         </a>
         <a class="contact-link" href="https://github.com/Alien0525" target="_blank">
             <div class="contact-icon">🐙</div>
@@ -1267,7 +1350,7 @@ Actively preparing for OSCP + OSAI, participating in CTFs, and hacking machines 
     </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══════════════════════════════════════════
 //  MATRIX RAIN
 // ═══════════════════════════════════════════
@@ -1422,6 +1505,29 @@ function closePing() {
 // ═══════════════════════════════════════════
 //  NAVIGATION
 // ═══════════════════════════════════════════
+function toggleMobileNav() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('navHamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+
+function closeMobileNav() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('navHamburger');
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+}
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('navHamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileNav();
+    }
+});
+
 function switchPage(pageId) {
     document.querySelectorAll('.page-section').forEach(s => {
         s.classList.remove('active');
@@ -1847,14 +1953,13 @@ HTB    : Active | OSCP prep in progress`;
 ║           WHY HIRE AMAN AHMED N S?                   ║
 ╚══════════════════════════════════════════════════════╝</span>
 
-  → Built Tier-0 infra at Salesforce trusted by millions
-  → Top of class at NYU in Networking + Network Security  
-  → Active security research: ShardGuard @ NYU Lab
-  → Full SIEM platform with ML threat detection from scratch
-  → CodeChef 4★ (Rank 176) · Codeforces Expert · CTF Winner
-  → Led DDoS incident response for production cloud
-  → GovCloud deployment 60% ahead of schedule
-  → Reduced customer queries 95% via automated tooling
+  → Software engineer with 2+ years building Tier-0 distributed systems at Salesforce
+  → Experience in networking, cloud infrastructure, and production reliability
+  → Hands-on with DevOps, infrastructure as code, and large-scale cloud environments
+  → Actively developing offensive security and AI Red Teaming expertise
+  → MS Cybersecurity @ NYU (GPA: 4.0) · Top of class in Network Security
+  → CTF player · Competitive programmer · Security-focused engineer
+  → Proven ability to design, deploy, and operate production-grade systems
 
 <span style="color:var(--cyan)">📬 amanns0525@gmail.com  ·  github.com/Alien0525</span></div>`;
                                             termBody.scrollTop = termBody.scrollHeight;
