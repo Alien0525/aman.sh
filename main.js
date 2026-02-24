@@ -420,14 +420,14 @@ hire_probability: 99.7% (if you got this far)
 
 const ROOT_HIDDEN = {
     '.bashrc': 'export PS1="guest@aman-sec:\\w\\$ "\nalias ll="ls -la"\nalias cls="clear"\nexport EDITOR=vim\n# i was wondering when you\'d open this',
-    '.ssh/': 'drwx------ (go away)',
+    '.ssh/': { isDir: true, msg: 'drwx------ (go away)' },
     '.secret': `0x666c61677b637572696f736974795f6c65645f75735f66726f6d5f666972655f746f5f6669726577616c6c737d`
 };
 
 const SUDO_RESPONSES = [
-    '<span style="color:var(--amber)">[SUDO] Checking if guest has root... 🤔</span>',
+    '<span style="color:var(--amber)">[SUDO] Checking if guest has root...</span>',
     '<span style="color:var(--red)">guest is not in the sudoers file. This incident will be reported.</span>',
-    '<span style="color:var(--muted)">(try: sudo hire me)</span>',
+    '<span style="color:var(--green)">(try: sudo hire me)</span>',
 ];
 
 function appendOutput(promptHtml, responseHtml) {
@@ -518,7 +518,7 @@ HTB    : Active | OSCP prep in progress`;
     } else if (cmd === 'uname') {
         response = `AmanOS 6.7.0-parrot-sec #1 SMP NYU-Tandon x86_64 GNU/Linux`;
 
-    } else if (cmd === 'ls' || cmd === 'ls' && args[1]) {
+    } else if (cmd === 'ls' || (cmd === 'ls' && args[1])) {
         const showHidden = args.includes('-la') || args.includes('-a');
         if (currentDir === '~') {
             const dirs = availableDirs.map(d => `<span style="color:var(--cyan);font-weight:bold">${d}/</span>`).join('   ');
@@ -551,6 +551,8 @@ HTB    : Active | OSCP prep in progress`;
             currentDir = '~';
             pathDisplay.innerText = '~';
             titleBar.innerText = 'guest@0xns : ~';
+        } else if (currentDir === '~' && (target === '.ssh' || target === '.ssh/')) {
+            response = `<span style="color:var(--red)">drwx------ (go away)</span>`;
         } else if (target.startsWith('../')) {
             const dest = target.slice(3);
             if (availableDirs.includes(dest)) {
@@ -580,6 +582,9 @@ HTB    : Active | OSCP prep in progress`;
         const targetLower = target.toLowerCase();
         if (!target) {
             response = `<span style="color:var(--red)">cat: missing operand</span>`;
+        } else if (currentDir === '~' && (targetLower === '.ssh' || targetLower === '.ssh/')) {
+            // Throws a directory error for cat to maintain the illusion
+            response = `<span style="color:var(--red)">cat: .ssh: Is a directory</span>`;
         } else if (currentDir !== '~') {
             const dirName = currentDir.replace('~/','');
             const files   = FILES[dirName]||{};
@@ -605,12 +610,12 @@ HTB    : Active | OSCP prep in progress`;
             const authSteps = [
                 `<span style="color:var(--muted)">Verifying credentials...</span>`,
                 `<span style="color:var(--muted)">Checking sudoers database...</span>`,
-                `<span style="color:var(--cyan)">Authenticating...  <span id="auth-bar"></span></span>`,
+                `<span style="color:var(--cyan)">Authenticating...  <span id=\"auth-bar\"></span></span>`,
             ];
             let ai = 0;
             function showAuthStep() {
                 if (ai < authSteps.length) {
-                    historyDiv.innerHTML += `<div class="output">${authSteps[ai]}</div>`;
+                    historyDiv.innerHTML += `<div class=\"output\">${authSteps[ai]}</div>`;
                     termBody.scrollTop = termBody.scrollHeight;
                     ai++;
                     if (ai === 3) {
@@ -626,23 +631,9 @@ HTB    : Active | OSCP prep in progress`;
                                     clearInterval(barInt);
                                     bar.textContent = '[█████████████████████████] 100%';
                                     setTimeout(() => {
-                                        historyDiv.innerHTML += `<div class="output"><span style="color:var(--green)">✓ Authentication successful.</span></div>`;
+                                        historyDiv.innerHTML += `<div class=\"output\"><span style=\"color:var(--green)\">✓ Authentication successful.</span></div>`;
                                         setTimeout(() => {
-                                            historyDiv.innerHTML += `<div class="output"><span style="color:var(--cyan)">╔══════════════════════════════════════════════════════╗
-║                     WHY HIRE AMAN N S?                     ║
-╚══════════════════════════════════════════════════════╝</span>
-
-  → Software engineer with 2+ years building Tier-0 distributed systems at Salesforce
-  → Experience in networking, cloud infrastructure, and production reliability
-  → Hands-on with DevOps, infrastructure as code, and large-scale cloud environments
-  → Actively developing offensive security and AI red teaming expertise
-  → MS Cybersecurity @ NYU (GPA: 4.0) · Top of class in Network Security
-  → CTF player · Competitive programmer · Security-focused engineer
-  → Proven ability to design, deploy, and operate production-grade systems
-
-  Target: Summer 2026 Security Internship
-
-<span style="color:var(--cyan)">📬 amanns0525@gmail.com  ·  github.com/Alien0525</span></div>`;
+                                            historyDiv.innerHTML += `<div class=\"output\"><span style=\"color:var(--cyan)\">╔══════════════════════════════════════════════════════╗\n║                     WHY HIRE AMAN N S?                     ║\n╚══════════════════════════════════════════════════════╝</span>\n\n  → Software engineer with 2+ years building Tier-0 distributed systems at Salesforce\n  → Experience in networking, cloud infrastructure, and production reliability\n  → Hands-on with DevOps, infrastructure as code, and large-scale cloud environments\n  → Actively developing offensive security and AI red teaming expertise\n  → MS Cybersecurity @ NYU (GPA: 4.0) · Top of class in Network Security\n  → CTF player · Competitive programmer · Security-focused engineer\n  → Proven ability to design, deploy, and operate production-grade systems\n\n  Target: Summer 2026 Security Internship\n\n<span style=\"color:var(--cyan)\">📬 amanns0525@gmail.com  ·  github.com/Alien0525</span></div>`;
                                             termBody.scrollTop = termBody.scrollHeight;
                                         }, 300);
                                         termBody.scrollTop = termBody.scrollHeight;
@@ -662,35 +653,17 @@ HTB    : Active | OSCP prep in progress`;
         }
 
     } else if (cmd === 'nmap') {
-        response = `<span style="color:var(--muted)">Starting Nmap 7.94 scan on 0xns.dev...</span>
-
-PORT      STATE  SERVICE     VERSION
-<span style="color:var(--green)">22/tcp    open   ssh         OpenSSH 9.3 (protocol 2.0)</span>
-<span style="color:var(--green)">80/tcp    open   http        nginx 1.24</span>
-<span style="color:var(--green)">443/tcp   open   https       TLS 1.3</span>
-<span style="color:var(--amber)">8001/tcp  open   opportunity seeking security internship</span>
-<span style="color:var(--cyan)">9000/tcp  open   collab      open to AI security + research projects</span>
-
-Host script results:
-<span style="color:var(--green)">| target-info:</span>
-|   status: <span style="color:var(--amber)">actively seeking Summer 2026 security internship</span>
-|   interests: offensive security · cloud security · AI/LLM security
-|   projects: ShardGuard (NYU) · CloudHawk SIEM — <span style="color:var(--cyan)">collab welcome</span>
-|   htb: active daily | oscp: in progress
-|_  contact: amanns0525@gmail.com
-
-OS: AmanOS 6.7.0-parrot-sec | Skills: Python Go C++ AWS GCP Terraform
-<span style="color:var(--muted)">Nmap done. Host is UP. 5 ports open.</span>`;
+        response = `<span style=\"color:var(--muted)\">Starting Nmap 7.94 scan on 0xns.dev...</span>\n\nPORT      STATE  SERVICE     VERSION\n<span style=\"color:var(--green)\">22/tcp    open   ssh         OpenSSH 9.3 (protocol 2.0)</span>\n<span style=\"color:var(--green)\">80/tcp    open   http        nginx 1.24</span>\n<span style=\"color:var(--green)\">443/tcp   open   https       TLS 1.3</span>\n<span style=\"color:var(--amber)\">8001/tcp  open   opportunity seeking security internship</span>\n<span style=\"color:var(--cyan)\">9000/tcp  open   collab      open to AI security + research projects</span>\n\nHost script results:\n<span style=\"color:var(--green)\">| target-info:</span>\n|   status: <span style=\"color:var(--amber)\">actively seeking Summer 2026 security internship</span>\n|   interests: offensive security · cloud security · AI/LLM security\n|   projects: ShardGuard (NYU) · CloudHawk SIEM — <span style=\"color:var(--cyan)\">collab welcome</span>\n|   htb: active daily | oscp: in progress\n|_  contact: amanns0525@gmail.com\n\nOS: AmanOS 6.7.0-parrot-sec | Skills: Python Go C++ AWS GCP Terraform\n<span style=\"color:var(--muted)\">Nmap done. Host is UP. 5 ports open.</span>`;
 
     } else if (cmd === 'history') {
         if (!cmdHistory.length) {
             response = '(no history)';
         } else {
-            response = cmdHistory.map((c,i) => `  <span style="color:var(--muted)">${String(i+1).padStart(3)}</span>  ${esc(c)}`).join('\n');
+            response = cmdHistory.map((c,i) => `  <span style=\"color:var(--muted)\">${String(i+1).padStart(3)}</span>  ${esc(c)}`).join('\n');
         }
 
     } else {
-        response = `<span style="color:var(--red)">bash: ${esc(cmd)}: command not found</span>\n<span style="color:var(--muted)">Type <span style="color:var(--amber)">help</span> for available commands.</span>`;
+        response = `<span style=\"color:var(--red)\">bash: ${esc(cmd)}: command not found</span>\n<span style=\"color:var(--muted)\">Type <span style=\"color:var(--amber)\">help</span> for available commands.</span>`;
     }
 
     appendOutput(prompt, response);
