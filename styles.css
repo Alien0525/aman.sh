@@ -737,7 +737,9 @@
             color: var(--purple);
             font-weight: 700;
             text-shadow: 0 0 12px rgba(192,132,252,0.4);
-            font-size: 0.82rem;
+            font-size: clamp(0.38rem, 1.6vw, 0.82rem);
+            display: block;
+            overflow-x: auto;
         }
 
         /* Typed cursor blink */
@@ -836,4 +838,3 @@
             text-shadow: 0 0 8px #39ff14;
         }
         @keyframes fadeInLine { from{opacity:0} to{opacity:1} }
-    
