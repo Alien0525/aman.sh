@@ -296,7 +296,7 @@ React dashboard with WebSocket live updates.
 Stack: Kafka · Python · FastAPI · Docker · ML`,
 
         'shardguard.md': `<span style="color:var(--cyan)">═══ ShardGuard ═══</span>
-LLM Security Framework | NYU Secure Systems Lab | Jan 2026 – Present
+LLM Security Framework | NYU Secure Systems Lab | Oct 2025 – Present
 <span style="color:#bf5fff">$</span> open <a href="https://github.com/Alien0525/ShardGuard" target="_blank" class="term-link">github.com/Alien0525/ShardGuard</a>
 AI security framework addressing prompt injection, data exfiltration,
 and privilege escalation in LLM-powered agent systems.
