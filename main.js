@@ -404,9 +404,7 @@ Stack: MATLAB · Wireless Communication · Algorithm Design · Research`,
   💻 Salesforce Codegenie (2024)
      AI assistant integrating Stack Overflow directly into VS Code
   🏅 Engineering Excellence Award (EngX) 2024
-     Salesforce Release 252 — quarterly award for outstanding performance
-  🔓 BITSCTF 2021 Winner
-     Led cryptography and web exploitation challenges` },
+     Salesforce Release 252 — quarterly award for outstanding performance` },
 
     'contact': { 'data.txt': `<span style="color:var(--cyan)">═══ CONTACT ═══</span>
 
